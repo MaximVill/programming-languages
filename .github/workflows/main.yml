@@ -1,7 +1,7 @@
 name: Сборка проекта при запросе на слияние
 on:
   pull_request:
-    branches: ["master"]
+    branches: ["master", "laba0"]
 jobs:
   build-test:
     name: Check build
