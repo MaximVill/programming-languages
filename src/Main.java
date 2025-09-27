@@ -1,9 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello and welcome!");
+        Balance balance1 = new Balance();
+        balance1.addRight(3);
+        balance1.addLeft(2);
+        balance1.result();
 
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("i = " + i);
-        }
+        Balance balance2 = new Balance();
+        balance2.addRight(2);
+        balance2.addLeft(3);
+        balance2.result();
+
+        Balance balance3 = new Balance();
+        balance3.addRight(3);
+        balance3.addLeft(3);
+        balance3.result();
     }
 }
