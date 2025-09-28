@@ -1,7 +1,7 @@
 package geometry2d;
 import exceptions.InvalidDimensionException;
 
-public class Circle {
+public class Circle implements Figure {
     double radius;
 
     public Circle(double radius){

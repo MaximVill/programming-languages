@@ -1,7 +1,7 @@
 package geometry2d;
 import exceptions.InvalidDimensionException;
 
-public class Rectangle {
+public class Rectangle implements Figure {
     double width;
     double height;
 
