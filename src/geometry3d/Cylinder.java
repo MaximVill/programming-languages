@@ -4,7 +4,7 @@ import exceptions.InvalidDimensionException;
 import exceptions.NullFigureException;
 
 public class Cylinder {
-    Figure base; // Основание
+    public Figure base; // Основание
     double height;
 
     public Cylinder(Figure base, double height) {
@@ -23,6 +23,6 @@ public class Cylinder {
     }
 
     public String toString() {
-        return String.format("Cylinder base, height, volume = ", base, height, volume());
+        return String.format("Cylinder{base=%s, height=%.2f, volume=%.2f}", base, height, volume());
     }
 }

@@ -20,6 +20,6 @@ public class Circle implements Figure {
     }
 
     public String toString() {
-        return String.format("Cicle radius = ", radius);
+        return String.format("Circle{radius=%.2f}", radius);
     }
 }

@@ -22,6 +22,6 @@ public class Rectangle implements Figure {
     }
 
     public String toString(){
-        return String.format("Rectangle width and height = ", width, height);
+        return String.format("Rectangle{w=%.2f, h=%.2f}", width, height);
     }
 }
