@@ -1,9 +1,16 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello and welcome!");
+        Scanner console = new Scanner(System.in);
+        System.out.print("Сколко элементов будет в массиве?\n>> ");
 
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("i = " + i);
+        int N = console.nextInt();
+        int[] massive = new int[N]; // Объявил массив и выделил ему память под N ячеек
+
+        for (int i = 0; i < N; i++) {
+            massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
+            System.out.println(massive[i]);
         }
     }
 }
