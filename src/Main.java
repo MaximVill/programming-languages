@@ -9,7 +9,7 @@ public class Main {
         int[] massive = new int[N]; // Объявил массив и выделил ему память под N ячеек
 
         for (int i = 0; i < N; i++) {
-            massive[i] = (int)(Math.random() * 10); // заполняем массив числами от 0 до 100
+            massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
             // System.out.println(massive[i]);
         }
 
@@ -37,7 +37,23 @@ public class Main {
         // System.out.println(List);
 
         // Оставил только уникальные элементы. Для этого временно сделаю числа от 0 до 9 и чтобы их стало 100 штук
-        Set<Integer> uniqueElements = new HashSet<>(List);
-        System.out.println(uniqueElements); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // Set<Integer> uniqueElements = new HashSet<>(List);
+        // System.out.println(uniqueElements); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        // Ищу дубликаты
+        Set<Integer> seen = new HashSet<>(); // уже встречавшиеся элементы
+        Set<Integer> duplicates = new HashSet<>(); // найденные дубликаты
+
+        for (Integer num : List) {
+            if (!seen.add(num)) { // add() возвращает false, если элемент уже был
+                duplicates.add(num);
+            }
+        }
+
+        if (duplicates.isEmpty()) {
+            System.out.println("Дубликатов нет.");
+        } else {
+            System.out.println(duplicates);
+        }
     }
 }
