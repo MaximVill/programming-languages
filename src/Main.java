@@ -25,5 +25,9 @@ public class Main {
         // Сортирую список по возрастанию
         Collections.sort(List);
         // System.out.println(List);
+
+        // Сортирую список в обратном порядке
+        Collections.sort(List, Collections.reverseOrder());
+        // System.out.println(List);
     }
 }
