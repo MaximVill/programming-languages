@@ -57,10 +57,21 @@ public class Main {
 //        }
 
         // Получаю из списка массив
-        int[] newMassive = new int[List.size()];
-        for (int i = 0; i <List.size(); i++) {
-            newMassive[i] = List.get(i);
-            System.out.println(newMassive[i]);
+//        int[] newMassive = new int[List.size()];
+//        for (int i = 0; i <List.size(); i++) {
+//            newMassive[i] = List.get(i);
+//            System.out.println(newMassive[i]);
+//        }
+
+        // Подсчитываем количество вхождений каждого числа
+        Map<Integer, Integer> counts = new HashMap<>();
+        for (Integer num : List) {
+            counts.put(num, counts.getOrDefault(num, 0) + 1);
+        }
+
+        // Выводим результат
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            System.out.println(entry.getKey() + " — " + entry.getValue() + " раз(а)");
         }
     }
 }
