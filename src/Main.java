@@ -1,8 +1,5 @@
-import utils.ArrayUtils;
-import utils.ListUtils;
-
 import java.util.*;
-
+import utils.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,19 +44,13 @@ public class Main {
         System.out.println("8. Дубликаты в списке: " + (dublicates.isEmpty() ? "В списке нет дубликатов" : dublicates));
 
 
-        // Получаю из списка массив
+        // №9. Получаю из списка массив
         int[] newMassive = ArrayUtils.listToInArray(List);
         System.out.println("9. Новый массив: " + Arrays.toString(newMassive));
-//
-//        // Подсчитываем количество вхождений каждого числа
-//        Map<Integer, Integer> counts = new HashMap<>();
-//        for (Integer num : List) {
-//            counts.put(num, counts.getOrDefault(num, 0) + 1);
-//        }
-//
-//        // Выводим результат
-//        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
-//            System.out.println(entry.getKey() + " — " + entry.getValue() + " раз(а)");
-//        }
+
+        // №10. Подсчитываем количество вхождений каждого числа
+        Map<Integer, Integer> counts = FrequencyCounter.countFrequencies(List);
+        System.out.println("10. Кол-во вхождений каждого числа в массиве:");
+        counts.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(e ->System.out.println(e.getKey() + " - " + e.getValue() + " раз(а)"));
     }
 }
