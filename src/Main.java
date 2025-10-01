@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,13 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
-            System.out.println(massive[i]);
         }
+
+        // создаю список на основе массива
+        ArrayList<Integer> List = new ArrayList<>();
+        for (int value : massive) {
+            List.add(value);
+        }
+        System.out.println(List);
     }
 }
