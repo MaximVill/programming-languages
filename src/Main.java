@@ -9,30 +9,34 @@ public class Main {
         Scanner console = new Scanner(System.in);
         System.out.print("Сколко элементов будет в массиве?\n>> ");
 
-        // №1.
+        // №1. Создаю массив
         int N = console.nextInt();
         int[] massive = ArrayUtils.randomMassive(N);
         System.out.println("1. Исходный массив: " + Arrays.toString(massive));
 
-        //№2.
+        //№2. Создаю список
         ArrayList<Integer> List = ListUtils.List(massive);
         System.out.println("2. Список: " + List);
-//
-//        // Сортирую список по возрастанию
-//         Collections.sort(List);
-//         System.out.println(List);
-//
-//        // Сортирую список в обратном порядке
-//         Collections.sort(List, Collections.reverseOrder());
-//         System.out.println(List);
-//
-//        // Перемешиваю список
-//         Collections.shuffle(List);
-//         System.out.println(List);
-//
-//        // Технический сдвиг на 1
-//         Collections.rotate(List, 1);
-//         System.out.println(List);
+
+        // №3. Сортирую список по возрастанию
+        ArrayList<Integer> sortAscending = new ArrayList<>(List);
+        Collections.sort(sortAscending);
+        System.out.println("3. Сортировка по возрастанию" + sortAscending);
+
+        // №4. Сортирую список в обратном порядке
+        ArrayList<Integer> sortDecreasing = new ArrayList<>(List);
+        Collections.sort(sortDecreasing, Collections.reverseOrder());
+        System.out.println("4. Сортировка по убыванию" + sortDecreasing);
+
+        // №5. Перемешиваю список
+        ArrayList<Integer> shuffled = new ArrayList<>(List);
+        Collections.shuffle(shuffled);
+        System.out.println("Перемешанный список относительно исходного: " + shuffled);
+
+        // №6. Технический сдвиг на 1
+        ArrayList<Integer> rotated = new ArrayList<>(List);
+        Collections.rotate(rotated, 1);
+        System.out.println("Технический сдвиг относительно исходного: " + rotated);
 //
 //        // Оставил только уникальные элементы. Для этого временно сделаю числа от 0 до 9 и чтобы их стало 100 штук
 //         Set<Integer> uniqueElements = new HashSet<>(List);
