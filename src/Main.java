@@ -1,4 +1,5 @@
 import utils.ArrayUtils;
+import utils.ListUtils;
 
 import java.util.*;
 
@@ -8,16 +9,14 @@ public class Main {
         Scanner console = new Scanner(System.in);
         System.out.print("Сколко элементов будет в массиве?\n>> ");
 
+        // №1.
         int N = console.nextInt();
         int[] massive = ArrayUtils.randomMassive(N);
         System.out.println("1. Исходный массив: " + Arrays.toString(massive));
 
-//        // создаю список на основе массива
-//        ArrayList<Integer> List = new ArrayList<>();
-//        for (int value : massive) {
-//            List.add(value);
-//        }
-//        System.out.println(List);
+        //№2.
+        ArrayList<Integer> List = ListUtils.List(massive);
+        System.out.println("2. Список: " + List);
 //
 //        // Сортирую список по возрастанию
 //         Collections.sort(List);
