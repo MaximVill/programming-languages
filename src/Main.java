@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +9,7 @@ public class Main {
         int[] massive = new int[N]; // Объявил массив и выделил ему память под N ячеек
 
         for (int i = 0; i < N; i++) {
-            massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
+            massive[i] = (int)(Math.random() * 10); // заполняем массив числами от 0 до 100
             // System.out.println(massive[i]);
         }
 
@@ -35,7 +33,11 @@ public class Main {
         // System.out.println(List);
 
         // Технический сдвиг на 1
-        Collections.rotate(List, 1);
-        System.out.println(List);
+        // Collections.rotate(List, 1);
+        // System.out.println(List);
+
+        // Оставил только уникальные элементы. Для этого временно сделаю числа от 0 до 9 и чтобы их стало 100 штук
+        Set<Integer> uniqueElements = new HashSet<>(List);
+        System.out.println(uniqueElements); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 }
