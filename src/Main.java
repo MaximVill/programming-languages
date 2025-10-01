@@ -41,19 +41,26 @@ public class Main {
         // System.out.println(uniqueElements); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         // Ищу дубликаты
-        Set<Integer> seen = new HashSet<>(); // уже встречавшиеся элементы
-        Set<Integer> duplicates = new HashSet<>(); // найденные дубликаты
+//        Set<Integer> seen = new HashSet<>(); // уже встречавшиеся элементы
+//        Set<Integer> duplicates = new HashSet<>(); // найденные дубликаты
+//
+//        for (Integer num : List) {
+//            if (!seen.add(num)) { // add() возвращает false, если элемент уже был
+//                duplicates.add(num);
+//            }
+//        }
+//
+//        if (duplicates.isEmpty()) {
+//            System.out.println("Дубликатов нет.");
+//        } else {
+//            System.out.println(duplicates);
+//        }
 
-        for (Integer num : List) {
-            if (!seen.add(num)) { // add() возвращает false, если элемент уже был
-                duplicates.add(num);
-            }
-        }
-
-        if (duplicates.isEmpty()) {
-            System.out.println("Дубликатов нет.");
-        } else {
-            System.out.println(duplicates);
+        // Получаю из списка массив
+        int[] newMassive = new int[List.size()];
+        for (int i = 0; i <List.size(); i++) {
+            newMassive[i] = List.get(i);
+            System.out.println(newMassive[i]);
         }
     }
 }
