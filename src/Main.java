@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
+            // System.out.println(massive[i]);
         }
 
         // создаю список на основе массива
@@ -18,6 +20,10 @@ public class Main {
         for (int value : massive) {
             List.add(value);
         }
-        System.out.println(List);
+        // System.out.println(List);
+
+        // Сортирую список по возрастанию
+        Collections.sort(List);
+        // System.out.println(List);
     }
 }
