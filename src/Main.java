@@ -12,7 +12,7 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             massive[i] = (int)(Math.random() * 100); // заполняем массив числами от 0 до 100
-            // System.out.println(massive[i]);
+            System.out.println(massive[i]);
         }
 
         // создаю список на основе массива
@@ -29,5 +29,9 @@ public class Main {
         // Сортирую список в обратном порядке
         Collections.sort(List, Collections.reverseOrder());
         // System.out.println(List);
+
+        // Перемешиваю список
+        Collections.shuffle(List);
+        System.out.println(List);
     }
 }
