@@ -14,7 +14,7 @@ public class ArrayUtils {
         return massive;
     }
 
-    // Преобразую список в массив
+    // Преобразую список в массив. (нашёл информацию про это ещё давно и записал в самом начале)
     public static int[] listToInArray(java.util.List<Integer> List) {
         return List.stream().mapToInt(Integer::intValue).toArray();
     }

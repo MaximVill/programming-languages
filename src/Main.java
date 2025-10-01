@@ -46,13 +46,10 @@ public class Main {
         Set<Integer> dublicates = ListUtils.dublicates(List);
         System.out.println("8. Дубликаты в списке: " + (dublicates.isEmpty() ? "В списке нет дубликатов" : dublicates));
 
-//
-//        // Получаю из списка массив
-//        int[] newMassive = new int[List.size()];
-//        for (int i = 0; i <List.size(); i++) {
-//            newMassive[i] = List.get(i);
-//            System.out.println(newMassive[i]);
-//        }
+
+        // Получаю из списка массив
+        int[] newMassive = ArrayUtils.listToInArray(List);
+        System.out.println("9. Новый массив: " + Arrays.toString(newMassive));
 //
 //        // Подсчитываем количество вхождений каждого числа
 //        Map<Integer, Integer> counts = new HashMap<>();
