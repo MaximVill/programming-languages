@@ -1,7 +1,12 @@
-class Human {
+class Human implements Comparable<Human>{
     String firstName;
     String lastName;
     String age;
+
+    @Override
+    public int compareTo(Human other) {
+        return this.lastName.compareTo(other.lastName);
+    }
 }
 
 public class Main {
