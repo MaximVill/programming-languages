@@ -1,36 +1,11 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import lombok.Data;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-// Класс книги
-@Data
-class Book {
-    private String name;
-    private String author;
-    private int publishingYear;
-}
-
-// Класс посетителя
-@Data
-class Visitor {
-    private String name;
-    private String surname;
-    private String phone;
-    private boolean subscribed;
-    private List<Book> favoriteBooks;
-}
-
-@Data
-class SmsMessage {
-    private String phoneNumber;
-    private String message;
-}
 
 public class Main {
     public static void main(String[] args) throws Exception {
