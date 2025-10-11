@@ -14,8 +14,6 @@ class Book {
     private String name;
     private String author;
     private int publishingYear;
-    private String isbn;
-    private String publisher;
 }
 
 // Класс посетителя
@@ -23,9 +21,15 @@ class Book {
 class Visitor {
     private String name;
     private String surname;
-    private String phone;
     private boolean subscribed;
     private List<Book> favoriteBooks;
+}
+
+// Класс сообщений
+@Data
+class SmsMessage {
+    private String phone;
+    private String massage;
 }
 
 public class Main {
@@ -69,5 +73,11 @@ public class Main {
         int maxBooks = visitors.stream().mapToInt(v -> v.getFavoriteBooks().size())
                 .max().orElse(0);
         System.out.println("\nЗАДАНИЕ 5, МАКСИМАЛЬНОЕ ЧИСЛО ИЗБРАННЫХ КНИГ У ОДНОГО ПОСЕТИТЕЛЯ: " + maxBooks);
+
+        // №6. Вывести список всех сгенерированных SMS-сообщений на экран.
+        // Среднее количество книг:
+        double averageBooks = visitors.stream().mapToDouble(v -> v.getFavoriteBooks().size())
+                .average().orElse(0.0); // 2.8
+        System.out.println(averageBooks);
     }
 }
