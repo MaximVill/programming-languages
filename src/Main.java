@@ -59,5 +59,10 @@ public class Main {
             Book b = allBooksSorted.get(i);
             System.out.println((i + 1) + ") " + b.getPublishingYear() + " — " + b.getName()); // 20 уникальных книг в избранном
         }
+
+        // №4. Проверить, есть ли у кого-то из посетителей в списке избранных книг произведение автора "Jane Austen".
+        boolean hasJaneAusten = visitors.stream().flatMap(v -> v.getFavoriteBooks().stream())
+                .anyMatch(b -> "Jane Austen".equals(b.getAuthor()));
+        System.out.println("\nЗАДАНИЕ 4, ЕСТЬ ЛИ КНИГИ Jane Austen? >> " + hasJaneAusten + " <<");
     }
 }
