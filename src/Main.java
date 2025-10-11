@@ -64,5 +64,10 @@ public class Main {
         boolean hasJaneAusten = visitors.stream().flatMap(v -> v.getFavoriteBooks().stream())
                 .anyMatch(b -> "Jane Austen".equals(b.getAuthor()));
         System.out.println("\nЗАДАНИЕ 4, ЕСТЬ ЛИ КНИГИ Jane Austen? >> " + hasJaneAusten + " <<");
+
+        // №5. Вывести максимальное число книг, добавленных одним посетителем в избранное.
+        int maxBooks = visitors.stream().mapToInt(v -> v.getFavoriteBooks().size())
+                .max().orElse(0);
+        System.out.println("\nЗАДАНИЕ 5, МАКСИМАЛЬНОЕ ЧИСЛО ИЗБРАННЫХ КНИГ У ОДНОГО ПОСЕТИТЕЛЯ: " + maxBooks);
     }
 }
