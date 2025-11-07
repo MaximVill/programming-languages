@@ -3,6 +3,9 @@ import lsp.Flyable;
 import lsp.Penguin;
 import lsp.Sparrow;
 import ocp.DiscountCalculator;
+import ocp.RegularDiscountStrategy;
+import ocp.SuperVipDiscountStrategy;
+import ocp.VipDiscountStrategy;
 import srp.ReportManager;
 
 import java.util.List;
@@ -16,9 +19,9 @@ public class Main {
 
         // ---------- O ----------
         DiscountCalculator calculator = new DiscountCalculator();
-        System.out.println("Regular: " + calculator.calculateDiscount("regular", 1000));
-        System.out.println("VIP: " + calculator.calculateDiscount("vip", 1000));
-        System.out.println("Super VIP: " + calculator.calculateDiscount("super_vip", 1000));
+        System.out.println("Regular: " + calculator.calculateDiscount(new RegularDiscountStrategy(), 1000));
+        System.out.println("VIP: " + calculator.calculateDiscount(new VipDiscountStrategy(), 1000));
+        System.out.println("Super VIP: " + calculator.calculateDiscount(new SuperVipDiscountStrategy(), 1000));
 
         // ---------- L ----------
         displayBird(new Sparrow());
