@@ -1,4 +1,5 @@
 import lsp.Bird;
+import lsp.Flyable;
 import lsp.Penguin;
 import lsp.Sparrow;
 import ocp.DiscountCalculator;
@@ -26,6 +27,10 @@ public class Main {
 
     public static void displayBird(Bird bird) {
         bird.eat();
-        bird.fly();
+        if (bird instanceof Flyable) {
+            ((Flyable) bird).fly();
+        } else {
+            System.out.println(bird.getClass().getSimpleName() + " не умеет летать");
+        }
     }
 }
