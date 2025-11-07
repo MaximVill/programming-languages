@@ -5,9 +5,4 @@ public class Penguin extends Bird {
     public void eat() {
         System.out.println("<звуки пингвина>, ем рыбу, <еще звуки пингвина>");
     }
-
-    @Override
-    public void fly() {
-
-    }
 }

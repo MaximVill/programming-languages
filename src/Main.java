@@ -33,7 +33,7 @@ public class Main {
         if (bird instanceof Flyable) {
             ((Flyable) bird).fly();
         } else {
-            System.out.println(bird.getClass().getSimpleName() + " не умеет летать");
+            System.out.println(bird.getClass().getSimpleName() + " не умеет летать.");
         }
     }
 }
