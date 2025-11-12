@@ -1,3 +1,5 @@
+import isp.OldPrinter;
+import isp.Printer;
 import lsp.Bird;
 import lsp.Flyable;
 import lsp.Penguin;
@@ -26,6 +28,10 @@ public class Main {
         // ---------- L ----------
         displayBird(new Sparrow());
         displayBird(new Penguin());     // Здесь будет исключение
+
+        // ---------- I ----------
+        Printer printer = new OldPrinter();
+        printer.print("Отчёт за неделю");
     }
 
     public static void displayBird(Bird bird) {
