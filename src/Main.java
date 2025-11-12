@@ -1,3 +1,6 @@
+import dip.EmailSender;
+import dip.NotificationService;
+import dip.SmsSender;
 import isp.OldPrinter;
 import isp.Printer;
 import lsp.Bird;
@@ -32,6 +35,13 @@ public class Main {
         // ---------- I ----------
         Printer printer = new OldPrinter();
         printer.print("Отчёт за неделю");
+
+        // ---------- D ----------
+        NotificationService emailService = new NotificationService(new EmailSender());
+        emailService.send("Ваш заказ готов к выдаче!");
+
+        NotificationService smsService = new NotificationService(new SmsSender());
+        smsService.send("Ваш заказ готов к выдаче (SMS)!");
     }
 
     public static void displayBird(Bird bird) {
