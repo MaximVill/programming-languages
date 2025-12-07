@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.lab10.CalculatorController"
+      spacing="10" alignment="CENTER"
+      prefWidth="300" prefHeight="400">
+
+    <TextField fx:id="displayField"
+               editable="false"
+               text="0"
+               style="-fx-font-size: 24px; -fx-alignment: CENTER-RIGHT;"
+               prefHeight="50"/>
+
+    <GridPane hgap="5" vgap="5" maxWidth="Infinity" alignment="CENTER">
+        <!-- Row 0 -->
+        <Button text="C" onAction="#handleClearButton"/>
+        <Button text="±" onAction="#handleSignButton"/>
+        <Button text="÷" onAction="#handleOperatorButton"/>
+        <Button text="×" onAction="#handleOperatorButton"/>
+
+        <!-- Row 1 -->
+        <Button text="7" onAction="#handleNumberButton"/>
+        <Button text="8" onAction="#handleNumberButton"/>
+        <Button text="9" onAction="#handleNumberButton"/>
+        <Button text="-" onAction="#handleOperatorButton"/>
+
+        <!-- Row 2 -->
+        <Button text="4" onAction="#handleNumberButton"/>
+        <Button text="5" onAction="#handleNumberButton"/>
+        <Button text="6" onAction="#handleNumberButton"/>
+        <Button text="+" onAction="#handleOperatorButton"/>
+
+        <!-- Row 3 -->
+        <Button text="1" onAction="#handleNumberButton"/>
+        <Button text="2" onAction="#handleNumberButton"/>
+        <Button text="3" onAction="#handleNumberButton"/>
+        <Button text="=" onAction="#handleEqualsButton" GridPane.rowSpan="2"/>
+
+        <!-- Row 4 -->
+        <Button text="0" onAction="#handleNumberButton" GridPane.columnSpan="2"/>
+        <Button text="." onAction="#handleDecimalButton"/>
+    </GridPane>
+</VBox>
