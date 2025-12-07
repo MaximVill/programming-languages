@@ -9,10 +9,8 @@ public class Server {
     public static void main(String[] args) throws Exception {
         ServerSocket server = new ServerSocket(8080);
         logger.info("Сервер запущен на порту 8080");
-
         while (true) {
             Socket client = server.accept();
-            logger.info("Новое подключение от {}", client.getInetAddress());
             new Thread(new ClientHandler(client)).start();
         }
     }

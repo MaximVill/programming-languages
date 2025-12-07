@@ -3,77 +3,53 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-    public static void main(String[] args) {
-        try (Scanner console = new Scanner(System.in)) {
-            System.out.print("Введите IP-адрес сервера (по умолчанию localhost): ");
-            String host = console.nextLine().trim();
-            if (host.isEmpty()) host = "localhost";
+    public static void main(String[] args) throws Exception {
+        Scanner console = new Scanner(System.in);
+        System.out.print("Ваш никнейм: ");
+        String nick = console.nextLine();
 
-            System.out.print("Введите порт (по умолчанию 8080): ");
-            String portStr = console.nextLine().trim();
-            int port = portStr.isEmpty() ? 8080 : Integer.parseInt(portStr);
+        try (Socket socket = new Socket("localhost", 8080);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
-            try (Socket socket = new Socket(host, port);
-                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
+            String serverMsg = in.readLine();
+            if (!"NICK".equals(serverMsg)) return;
+            out.println(nick);
 
-                String welcomeMessage = reader.readLine(); // "Введите ваш никнейм:"
-                System.out.println(welcomeMessage);
-
-                System.out.print("Ваш никнейм: ");
-                String nickname = console.nextLine();
-                writer.println(nickname);
-
-                // Поток для получения сообщений от сервера
-                Thread readerThread = new Thread(() -> {
-                    String message;
-                    try {
-                        while ((message = reader.readLine()) != null) {
-                            System.out.println(message);
-                        }
-                    } catch (IOException e) {
-                        if (!socket.isClosed()) {
-                            System.err.println("Соединение с сервером разорвано.");
-                        }
+            // Поток для входящих сообщений
+            Thread reader = new Thread(() -> {
+                try {
+                    String msg;
+                    while ((msg = in.readLine()) != null) {
+                        System.out.println(msg);
                     }
-                });
-                readerThread.setDaemon(true);
-                readerThread.start();
+                } catch (IOException ignored) {}
+            });
+            reader.setDaemon(true);
+            reader.start();
 
-                // Основной цикл отправки сообщений
-                System.out.println("Подключено! Введите 'exit' для выхода.");
-                System.out.println("Для отправки сообщения используйте:\n  1 — всем, 2 — личное");
+            // Основной цикл
+            while (true) {
+                System.out.println("\nКоманды: /all <текст>, /msg, exit");
+                String input = console.nextLine().trim();
 
-                while (true) {
-                    System.out.print("\nВыберите тип сообщения (1/2): ");
-                    String choice = console.nextLine().trim();
-
-                    if ("exit".equalsIgnoreCase(choice)) {
-                        break;
-                    }
-
-                    if ("1".equals(choice)) {
-                        System.out.print("Текст сообщения (ALL): ");
+                if ("exit".equalsIgnoreCase(input)) {
+                    out.println("EXIT");
+                    break;
+                } else if (input.startsWith("/all ")) {
+                    out.println("ALL:" + input.substring(5));
+                } else if ("/msg".equals(input)) {
+                    out.println("LIST");
+                    String list = in.readLine(); // ждём ответ
+                    if (list != null && list.startsWith("CLIENTS: ")) {
+                        System.out.println(list);
+                        System.out.print("Кому: ");
+                        String to = console.nextLine().trim();
+                        System.out.print("Текст: ");
                         String text = console.nextLine();
-                        writer.println("ALL: " + text);
-
-                    } else if ("2".equals(choice)) {
-                        // попросим пользователя ввести вручную.
-                        System.out.print("Ник получателя: ");
-                        String recipient = console.nextLine().trim();
-                        System.out.print("Текст сообщения: ");
-                        String text = console.nextLine();
-                        writer.println("TO: " + recipient + " : " + text);
-
-                    } else {
-                        System.out.println("Неверный выбор. Введите 1 (всем) или 2 (личное).");
+                        out.println("TO:" + to + ":" + text);
                     }
                 }
-
-            } catch (NumberFormatException e) {
-                System.err.println("Некорректный порт.");
-            } catch (IOException e) {
-                System.err.println("Не удалось подключиться к серверу: " + e.getMessage());
             }
 
         }
