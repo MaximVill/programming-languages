@@ -1,4 +1,4 @@
-package org.example.lab10;
+package org.example.lab10.calculator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
