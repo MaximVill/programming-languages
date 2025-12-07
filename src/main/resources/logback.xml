@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE_ALL" class="ch.qos.logback.core.FileAppender">
+        <file>server.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE_ERRORS" class="ch.qos.logback.core.FileAppender">
+        <file>errors.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="errors" level="WARN" additivity="false">
+        <appender-ref ref="FILE_ERRORS"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_ALL"/>
+    </root>
+</configuration>
