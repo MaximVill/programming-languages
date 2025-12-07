@@ -21,8 +21,8 @@ public class ClientHandler implements Runnable {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
 
-            // Шаг 1: Получить никнейм от клиента
-            logger.warn("Введите ваш никнейм:");
+            // Получаю никнейм от клиента
+            writer.println("Введите ваш никнейм:");
             nickname = reader.readLine();
             if (nickname == null || nickname.trim().isEmpty()) {
                 writer.println("Никнейм не может быть пустым. Отключение.");
@@ -31,17 +31,13 @@ public class ClientHandler implements Runnable {
             clients.put(nickname, this);
             logger.info("Подключился: {}", nickname);
 
-            // Шаг 2: Уведомить всех о новом подключении
+            // Уведомление всех о новом подключении
             broadcastMessage(null, "ALL", nickname + " присоединился к чату.");
 
-            // Шаг 3: Обработка сообщений от клиента
+            // Обработка сообщений от клиента
             String message;
             while ((message = reader.readLine()) != null) {
                 // Парсим сообщение в формате: [тип] [адресат] : текст
-                // Примеры:
-                // "ALL: Привет всем!"
-                // "TO: Максим: Привет, Максим!"
-
                 if (message.startsWith("ALL:")) {
                     String text = message.substring(4).trim();
                     broadcastMessage(nickname, "ALL", text);
@@ -90,7 +86,7 @@ public class ClientHandler implements Runnable {
             // Отправляем отправителю, что получатель не найден
             try {
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-                logger.warn("Получатель '{}' не найден.", recipient);
+                writer.println("Получатель '" + recipient + "' не найден.");
             } catch (IOException e) {
                 logger.error("Ошибка при отправке сообщения об ошибке: {}", e.getMessage());
             }
