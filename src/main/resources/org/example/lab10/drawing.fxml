@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.lab10.drawing.DrawingController"
+      spacing="10" alignment="TOP_CENTER"
+      prefWidth="800" prefHeight="600">
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Круг" onAction="#drawCircle"/>
+        <Button text="Прямоугольник" onAction="#drawRectangle"/>
+        <Button text="Треугольник" onAction="#drawTriangle"/>
+    </HBox>
+
+    <Pane fx:id="drawingPane" prefHeight="500" style="-fx-background-color: white;"/>
+
+</VBox>
